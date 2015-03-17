@@ -53,8 +53,6 @@ class SpentTime
 end
 
 class GitCommitMailer
-  URL = "https://github.com/clear-code/git-utils"
-
   KILO_SIZE = 1000
   DEFAULT_MAX_SIZE = "100M"
 
