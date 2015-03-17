@@ -32,6 +32,8 @@ require "shellwords"
 require "erb"
 require "digest"
 
+require "git-commit-mailer"
+
 class SpentTime
   def initialize(label)
     @label = label
@@ -51,7 +53,6 @@ class SpentTime
 end
 
 class GitCommitMailer
-  VERSION = "1.0.0"
   URL = "https://github.com/clear-code/git-utils"
 
   KILO_SIZE = 1000
