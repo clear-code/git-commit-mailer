@@ -1,0 +1,30 @@
+X-Git-Author: User Name
+X-Git-Revision: 0ae21c98baebc3ab1abaaf7c2ee66bbf2a828358
+X-Git-Repository: XXX
+X-Git-Commit-Id: 0ae21c98baebc3ab1abaaf7c2ee66bbf2a828358
+Message-ID: <0ae21c98baebc3ab1abaaf7c2ee66bbf2a828358@git-utils.example.com>
+X-Mailer: GitCommitMailer 1.0.0; https://github.com/clear-code/git-utils
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+From: User Name <user@example.com>
+To: to@example
+Subject: sample-repo@0ae21c9 [master] added a file with japanese file name
+Date: Wed, 13 Jan 2010 15:15:43 +0900
+
+User Name	2010-01-13 15:15:43 +0900 (Wed, 13 Jan 2010)
+
+  New Revision: 0ae21c98baebc3ab1abaaf7c2ee66bbf2a828358
+
+  Message:
+    added a file with japanese file name
+
+  Added files:
+    日本語.txt
+
+  Added: 日本語.txt (+1 -0) 100644
+===================================================================
+--- /dev/null
++++ 日本語.txt    2010-01-13 15:15:43 +0900 (9e2a613)
+@@ -0,0 +1 @@
++日本語の文章です。

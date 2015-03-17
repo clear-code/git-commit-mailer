@@ -1,0 +1,29 @@
+X-Git-Author: User Name
+X-Git-Revision: cfadf1b6c9fb4f5d11ae6ed3b999999f86c7342a
+X-Git-Repository: XXX
+X-Git-Commit-Id: cfadf1b6c9fb4f5d11ae6ed3b999999f86c7342a
+Message-ID: <cfadf1b6c9fb4f5d11ae6ed3b999999f86c7342a@git-utils.example.com>
+X-Mailer: GitCommitMailer 1.0.0; https://github.com/clear-code/git-utils
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+From: User Name <user@example.com>
+To: to@example
+Subject: sample-repo@cfadf1b [master] changed a file mode
+Date: Wed, 13 Jan 2010 15:15:44 +0900
+
+User Name	2010-01-13 15:15:44 +0900 (Wed, 13 Jan 2010)
+
+  New Revision: cfadf1b6c9fb4f5d11ae6ed3b999999f86c7342a
+
+  Message:
+    changed a file mode
+
+  Modified files:
+    sample_file
+
+  Modified: sample_file (+0 -0)
+  Mode: 100644 -> 100755
+===================================================================
+--- sample_file    2010-01-13 15:15:43 +0900
++++ sample_file    2010-01-13 15:15:44 +0900

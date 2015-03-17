@@ -1,0 +1,34 @@
+X-Git-Author: User Name
+X-Git-Revision: 80e3cba6fd15ff67bd3ed1e29cd1cea5b3914eb6
+X-Git-Repository: XXX
+X-Git-Commit-Id: 80e3cba6fd15ff67bd3ed1e29cd1cea5b3914eb6
+Message-ID: <80e3cba6fd15ff67bd3ed1e29cd1cea5b3914eb6@git-utils.example.com>
+X-Mailer: GitCommitMailer 1.0.0; https://github.com/clear-code/git-utils
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+From: User Name <user@example.com>
+To: to@example
+Subject: sample-repo@80e3cba [master] removed trailing spaces
+Date: Wed, 13 Jan 2010 15:15:44 +0900
+
+User Name	2010-01-13 15:15:44 +0900 (Wed, 13 Jan 2010)
+
+  New Revision: 80e3cba6fd15ff67bd3ed1e29cd1cea5b3914eb6
+
+  Message:
+    removed trailing spaces
+
+  Modified files:
+    sample_file
+
+  Modified: sample_file (+1 -1)
+===================================================================
+--- sample_file    2010-01-13 15:15:43 +0900 (cf53d40)
++++ sample_file    2010-01-13 15:15:44 +0900 (2ca1d2b)
+@@ -1,4 +1,4 @@
+ This is a sample text file.
+ This file will be modified to make commits.
+-    
++
+ In the above line, I intentionally left some spaces.
