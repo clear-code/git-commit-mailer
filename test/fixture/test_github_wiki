@@ -3,7 +3,7 @@ X-Git-Revision: 2392e31917f73590151ce784e8f186c0019d8b01
 X-Git-Repository: XXX
 X-Git-Commit-Id: 2392e31917f73590151ce784e8f186c0019d8b01
 Message-ID: <2392e31917f73590151ce784e8f186c0019d8b01@git-utils.example.com>
-X-Mailer: GitCommitMailer 1.0.0; https://github.com/clear-code/git-utils
+X-Mailer: GitCommitMailer 1.0.0; https://github.com/clear-code/git-commit-mailer
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
