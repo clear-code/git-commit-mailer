@@ -24,97 +24,97 @@
 require_relative "../lib/git-commit-mailer"
 
 
-  begin
-    argv = []
-    processing_change = nil
+begin
+  argv = []
+  processing_change = nil
 
-    found_include_option = false
-    ARGV.each do |arg|
-      if found_include_option
-        $LOAD_PATH.unshift(arg)
-        found_include_option = false
+  found_include_option = false
+  ARGV.each do |arg|
+    if found_include_option
+      $LOAD_PATH.unshift(arg)
+      found_include_option = false
+    else
+      case arg
+      when "-I", "--include"
+        found_include_option = true
+      when /\A-I/, /\A--include=?/
+        path = $POSTMATCH
+        $LOAD_PATH.unshift(path) unless path.empty?
       else
-        case arg
-        when "-I", "--include"
-          found_include_option = true
-        when /\A-I/, /\A--include=?/
-          path = $POSTMATCH
-          $LOAD_PATH.unshift(path) unless path.empty?
-        else
-          argv << arg
-        end
+        argv << arg
       end
     end
+  end
 
-    mailer = GitCommitMailer.parse_options_and_create(argv)
+  mailer = GitCommitMailer.parse_options_and_create(argv)
 
-    if not mailer.track_remote?
-      running = SpentTime.new("running the whole command")
-      running.spend do
-        while line = STDIN.gets
-          old_revision, new_revision, reference = line.split
-          processing_change = [old_revision, new_revision, reference]
-          mailer.process_reference_change(old_revision, new_revision, reference)
-          mailer.send_all_mails
-        end
-      end
-
-      if mailer.verbose?
-        $executing_git.report
-        $sending_mail.report
-        running.report
-      end
-    else
-      reference_changes = mailer.fetch
-      reference_changes.each do |old_revision, new_revision, reference|
+  if not mailer.track_remote?
+    running = SpentTime.new("running the whole command")
+    running.spend do
+      while line = STDIN.gets
+        old_revision, new_revision, reference = line.split
         processing_change = [old_revision, new_revision, reference]
         mailer.process_reference_change(old_revision, new_revision, reference)
         mailer.send_all_mails
       end
     end
-  rescue Exception => error
-    require 'net/smtp'
-    require 'socket'
-    require 'etc'
 
-    to = []
-    subject = "Error"
-    user = Etc.getpwuid(Process.uid).name
-    from = "#{user}@#{Socket.gethostname}"
-    sender = nil
-    server = nil
-    port = nil
-    begin
-      to, options = GitCommitMailer.parse(argv)
-      to = options.error_to unless options.error_to.empty?
-      from = options.from || from
-      sender = options.sender
-      subject = "#{options.name}: #{subject}" if options.name
-      server = options.server
-      port = options.port
-    rescue OptionParser::MissingArgument
-      argv.delete_if {|argument| $!.args.include?(argument)}
-      retry
-    rescue OptionParser::ParseError
-      if to.empty?
-        _to, *_ = ARGV.reject {|argument| /^-/.match(argument)}
-        to = [_to]
-      end
+    if mailer.verbose?
+      $executing_git.report
+      $sending_mail.report
+      running.report
     end
+  else
+    reference_changes = mailer.fetch
+    reference_changes.each do |old_revision, new_revision, reference|
+      processing_change = [old_revision, new_revision, reference]
+      mailer.process_reference_change(old_revision, new_revision, reference)
+      mailer.send_all_mails
+    end
+  end
+rescue Exception => error
+  require 'net/smtp'
+  require 'socket'
+  require 'etc'
 
-    detail = <<-EOM
+  to = []
+  subject = "Error"
+  user = Etc.getpwuid(Process.uid).name
+  from = "#{user}@#{Socket.gethostname}"
+  sender = nil
+  server = nil
+  port = nil
+  begin
+    to, options = GitCommitMailer.parse(argv)
+    to = options.error_to unless options.error_to.empty?
+    from = options.from || from
+    sender = options.sender
+    subject = "#{options.name}: #{subject}" if options.name
+    server = options.server
+    port = options.port
+  rescue OptionParser::MissingArgument
+    argv.delete_if {|argument| $!.args.include?(argument)}
+    retry
+  rescue OptionParser::ParseError
+    if to.empty?
+      _to, *_ = ARGV.reject {|argument| /^-/.match(argument)}
+      to = [_to]
+    end
+  end
+
+  detail = <<-EOM
 Processing change: #{processing_change.inspect}
 
 #{error.class}: #{error.message}
 #{error.backtrace.join("\n")}
   EOM
-    to = to.compact
-    if to.empty?
-      STDERR.puts detail
-    else
-      from = GitCommitMailer.extract_email_address(from)
-      to = to.collect {|address| GitCommitMailer.extract_email_address(address)}
-      header = <<-HEADER
+  to = to.compact
+  if to.empty?
+    STDERR.puts detail
+  else
+    from = GitCommitMailer.extract_email_address(from)
+    to = to.collect {|address| GitCommitMailer.extract_email_address(address)}
+    header = <<-HEADER
 X-Mailer: #{GitCommitMailer.x_mailer}
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -124,14 +124,14 @@ To: #{to.join(', ')}
 Subject: #{subject}
 Date: #{Time.now.rfc2822}
 HEADER
-      header << "Sender: #{sender}\n" if sender
-      mail = <<-MAIL
+    header << "Sender: #{sender}\n" if sender
+    mail = <<-MAIL
 #{header}
 
 #{detail}
 MAIL
-      GitCommitMailer.send_mail(server || "localhost", port,
-                                sender || from, to, mail)
-      exit(false)
-    end
+    GitCommitMailer.send_mail(server || "localhost", port,
+                              sender || from, to, mail)
+    exit(false)
   end
+end
