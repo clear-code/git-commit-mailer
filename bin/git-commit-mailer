@@ -24,7 +24,6 @@
 require_relative "../lib/git-commit-mailer"
 
 
-if __FILE__ == $0
   begin
     argv = []
     processing_change = nil
@@ -136,4 +135,3 @@ MAIL
       exit(false)
     end
   end
-end
