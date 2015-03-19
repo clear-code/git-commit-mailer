@@ -33,10 +33,13 @@ Edit "post-receive" shell script file to execute it from there,
 which is located under "hooks" directory in a git repository.
 
 Example:
+
+~~~
     /usr/bin/ruby /path/to/commit-email.rb \
       --from-domain=example.com \
       --error-to=onodera@example.com \
       commit@example.com
+~~~
 
 For more detailed usage and options, execute commit-email.rb
 with `--help` option.
