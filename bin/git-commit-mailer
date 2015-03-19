@@ -32,7 +32,7 @@ require "shellwords"
 require "erb"
 require "digest"
 
-require "git-commit-mailer"
+require_relative "../lib/git-commit-mailer"
 
 class SpentTime
   def initialize(label)

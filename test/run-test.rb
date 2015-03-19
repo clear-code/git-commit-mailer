@@ -30,7 +30,7 @@ require "nkf"
 
 $LOAD_PATH.unshift(bin_dir)
 
-require "commit-email"
+load "git-commit-mailer"
 
 ENV["TZ"] = "Asia/Tokyo"
 ENV["TEST_UNIT_MAX_DIFF_TARGET_STRING_SIZE"] ||= "500000"
