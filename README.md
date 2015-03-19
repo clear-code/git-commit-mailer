@@ -35,7 +35,7 @@ which is located under "hooks" directory in a git repository.
 Example:
 
 ~~~
-    /usr/bin/ruby /path/to/commit-email.rb \
+    git-commit-mailer \
       --from-domain=example.com \
       --error-to=onodera@example.com \
       commit@example.com
