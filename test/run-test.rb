@@ -19,7 +19,7 @@
 $VERBOSE = true
 
 top_dir = File.expand_path(File.join(File.dirname(__FILE__), ".."))
-bin_dir = File.join(top_dir, "bin")
+lib_dir = File.join(top_dir, "lib")
 test_dir = File.dirname(__FILE__)
 
 require "rubygems"
@@ -28,9 +28,9 @@ require "test/unit/rr"
 require "tempfile"
 require "nkf"
 
-$LOAD_PATH.unshift(bin_dir)
+$LOAD_PATH.unshift(lib_dir)
 
-load "git-commit-mailer"
+require "git-commit-mailer"
 
 ENV["TZ"] = "Asia/Tokyo"
 ENV["TEST_UNIT_MAX_DIFF_TARGET_STRING_SIZE"] ||= "500000"
