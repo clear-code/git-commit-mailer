@@ -17,14 +17,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class GitCommitMailer
-    class TextMailBodyFormatter < MailBodyFormatter
-      def format
-        super.sub(/\n+\z/, "\n")
-      end
+  class TextMailBodyFormatter < MailBodyFormatter
+    def format
+      super.sub(/\n+\z/, "\n")
+    end
 
-      private
-      def template
-        <<-EOT
+    private
+    def template
+      <<-EOT
 <%= @info.author_name %>\t<%= @mailer.format_time(@info.date) %>
 
 
@@ -51,37 +51,37 @@ class GitCommitMailer
 
 <%= format_diff %>
 EOT
-      end
+    end
 
-      def format_commit_url
-        url = commit_url
-        return "" if url.nil?
-        "  #{url}\n"
-      end
+    def format_commit_url
+      url = commit_url
+      return "" if url.nil?
+      "  #{url}\n"
+    end
 
-      def format_files(title, items)
-        return "" if items.empty?
+    def format_files(title, items)
+      return "" if items.empty?
 
-        formatted_files = "  #{title} files:\n"
-        items.each do |item_name, new_item_name|
-          if new_item_name.nil?
-            formatted_files << "    #{item_name}\n"
-          else
-            formatted_files << "    #{new_item_name}\n"
-            formatted_files << "      (from #{item_name})\n"
-          end
+      formatted_files = "  #{title} files:\n"
+      items.each do |item_name, new_item_name|
+        if new_item_name.nil?
+          formatted_files << "    #{item_name}\n"
+        else
+          formatted_files << "    #{new_item_name}\n"
+          formatted_files << "      (from #{item_name})\n"
         end
-        formatted_files
       end
+      formatted_files
+    end
 
-      def format_diff
-        format_diffs.join("\n")
-      end
+    def format_diff
+      format_diffs.join("\n")
+    end
 
-      def format_diffs
-        @info.diffs.collect do |diff|
-          diff.format
-        end
+    def format_diffs
+      @info.diffs.collect do |diff|
+        diff.format
       end
     end
+  end
 end
