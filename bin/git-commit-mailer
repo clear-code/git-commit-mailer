@@ -21,7 +21,7 @@
 # change detection:
 #   http://git.kernel.org/?p=git/git.git;a=blob;f=contrib/hooks/post-receive-email
 
-require_relative "../lib/git-commit-mailer"
+require "git-commit-mailer"
 
 
 begin
