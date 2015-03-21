@@ -17,7 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class GitCommitMailer
-  class CommitInfo
     class TextMailBodyFormatter < MailBodyFormatter
       def format
         super.sub(/\n+\z/, "\n")
@@ -85,5 +84,4 @@ EOT
         end
       end
     end
-  end
 end

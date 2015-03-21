@@ -17,7 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class GitCommitMailer
-  class CommitInfo
     class MailBodyFormatter
       def initialize(info)
         @info = info
@@ -95,5 +94,4 @@ class GitCommitMailer
         end
       end
     end
-  end
 end

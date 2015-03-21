@@ -19,7 +19,7 @@ class FileDiffTest < Test::Unit::TestCase
   sub_test_case("parse_header") do
     def parse_header(header_line)
       lines = [header_line]
-      file_diff = GitCommitMailer::CommitInfo::FileDiff.allocate
+      file_diff = GitCommitMailer::FileDiff.allocate
       file_diff.send(:parse_header, lines)
       [
         file_diff.instance_variable_get(:@from_file),

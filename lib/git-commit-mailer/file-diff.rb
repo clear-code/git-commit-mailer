@@ -17,7 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class GitCommitMailer
-  class CommitInfo
     class FileDiff
       CHANGED_TYPE = {
         :added    => "Added",
@@ -354,5 +353,4 @@ class GitCommitMailer
         "#{"=" * 67}\n"
       end
     end
-  end
 end

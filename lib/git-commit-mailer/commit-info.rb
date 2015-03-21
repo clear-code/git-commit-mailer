@@ -285,7 +285,7 @@ class GitCommitMailer
   end
 end
 
-require "git-commit-mailer/commit-info/file-diff"
-require "git-commit-mailer/commit-info/mail-body-formatter"
-require "git-commit-mailer/commit-info/text-mail-body-formatter"
-require "git-commit-mailer/commit-info/html-mail-body-formatter"
+require "git-commit-mailer/file-diff"
+require "git-commit-mailer/mail-body-formatter"
+require "git-commit-mailer/text-mail-body-formatter"
+require "git-commit-mailer/html-mail-body-formatter"

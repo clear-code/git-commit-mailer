@@ -17,7 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class GitCommitMailer
-  class CommitInfo
     class HTMLMailBodyFormatter < MailBodyFormatter
       include ERB::Util
 
@@ -561,5 +560,4 @@ EOT
             content)
       end
     end
-  end
 end
