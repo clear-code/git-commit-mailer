@@ -19,7 +19,7 @@ license/GPL-3.txt for details.
 
 ## Dependencies
 
-* Ruby >= 2.0.0
+* Ruby >= 1.9.3
 * git >= 1.7
 
 ## Install
