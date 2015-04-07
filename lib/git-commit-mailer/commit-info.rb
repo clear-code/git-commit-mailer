@@ -85,7 +85,11 @@ class GitCommitMailer
     end
 
     def message_id
-      "<#{@revision}@#{self.class.host_name}>"
+      if merge?
+        "<#{@parent_revisions.first}.#{@revision}@#{self.class.host_name}>"
+      else
+        "<#{@revision}@#{self.class.host_name}>"
+      end
     end
 
     def headers
