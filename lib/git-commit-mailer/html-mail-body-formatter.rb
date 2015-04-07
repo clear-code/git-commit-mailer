@@ -51,7 +51,7 @@ class GitCommitMailer
       </dd>
 <% end %>
       <%= dt("Message") %>
-      <%= dd(pre(h(@info.summary.strip))) %>
+      <%= dd(format_summary(@info.summary.strip)) %>
 <%= format_files("Added",        @info.added_files) %>
 <%= format_files("Copied",       @info.copied_files) %>
 <%= format_files("Removed",      @info.deleted_files) %>
@@ -207,6 +207,22 @@ EOT
         content_column << "\n"
       end
       [from_line_column, to_line_column, content_column]
+    end
+
+    def format_summary(summary)
+      case @mailer.repository_browser
+      when "github"
+        linked_summary = h(summary).gsub(/\#(\d+)/) do
+          %Q(<a href="#{github_issue_url($1)}">\##{$1}</a>)
+        end
+        pre(linked_summary)
+      else
+        pre(h(summary))
+      end
+    end
+
+    def github_issue_url(id)
+      "https://#{@mailer.github_base_url}/#{@mailer.github_user}/#{@mailer.github_repository}/issues/#{id}"
     end
 
     def tag_start(name, attributes)
