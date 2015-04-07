@@ -47,7 +47,7 @@ class GitCommitMailer
     end
 
     def message_id
-      "<#{old_revision}.#{new_revision}@#{self.class.host_name}>"
+      "<push.#{old_revision}.#{new_revision}@#{self.class.host_name}>"
     end
 
     def headers

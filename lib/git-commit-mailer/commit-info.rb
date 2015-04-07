@@ -86,7 +86,7 @@ class GitCommitMailer
 
     def message_id
       if merge?
-        "<#{@parent_revisions.first}.#{@revision}@#{self.class.host_name}>"
+        "<merge.#{@parent_revisions.first}.#{@revision}@#{self.class.host_name}>"
       else
         "<#{@revision}@#{self.class.host_name}>"
       end
