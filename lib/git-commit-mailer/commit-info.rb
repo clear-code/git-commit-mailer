@@ -46,7 +46,7 @@ class GitCommitMailer
     attr_reader :subject, :author_name, :author_email, :date, :summary
     attr_accessor :merge_status
     attr_writer :reference
-    attr_reader :merge_revisions
+    attr_reader :merge_commits
     def initialize(mailer, reference, revision)
       @mailer = mailer
       @reference = reference
@@ -65,7 +65,7 @@ class GitCommitMailer
       parse_diff
 
       @merge_status = []
-      @merge_revisions = []
+      @merge_commits = []
     end
 
     def first_parent
@@ -106,8 +106,8 @@ class GitCommitMailer
 
     def related_mail_headers
       headers = []
-      @merge_revisions.each do |merge_revision|
-        merge_message_id = "<#{merge_revision}@#{self.class.host_name}>"
+      @merge_commits.each do |merge_commit|
+        merge_message_id = merge_commit.message_id
         headers << "References: #{merge_message_id}"
         headers << "In-Reply-To: #{merge_message_id}"
       end
