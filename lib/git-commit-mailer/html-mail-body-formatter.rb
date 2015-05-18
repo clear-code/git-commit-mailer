@@ -222,7 +222,7 @@ EOT
     end
 
     def github_issue_url(id)
-      "https://#{@mailer.github_base_url}/#{@mailer.github_user}/#{@mailer.github_repository}/issues/#{id}"
+      "#{@mailer.github_base_url}/#{@mailer.github_user}/#{@mailer.github_repository}/issues/#{id}"
     end
 
     def tag_start(name, attributes)
