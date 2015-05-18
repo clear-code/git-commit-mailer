@@ -780,6 +780,22 @@ EOR
     _, commit_mails = get_mails_of_last_push
     assert_mail('test_html', commit_mails.first)
   end
+
+  def test_github_html
+    set_additional_default_mailer_option("--add-html",
+                                         "--repository-browser=github",
+                                         "--github-user=clear-code",
+                                         "--github-repository=git-commit-mailer")
+    create_default_mailer
+    stub(@mailer).generate_boundary {"9c155171616a69b0feb5eb8bfc10502dfa0444ba"}
+
+    create_file("README.rdoc", "= README")
+    git "commit -m %s" % shell_escape("Add README; fix #1")
+    git "push"
+
+    _, commit_mails = get_mails_of_last_push
+    assert_mail('test_github_html', commit_mails.first)
+  end
 end
 
 module HookModeTest
