@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Copyright (C) 2009  Ryo Onodera <onodera@clear-code.com>
-# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2015  Kouhei Sutou <kou@clear-code.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ class GitCommitMailer
 
     private
     def template
-      <<-EOT
+      <<-TEMPLATE
 <!DOCTYPE html>
 <html>
   <head>
@@ -63,7 +63,7 @@ class GitCommitMailer
 <%= format_diffs %>
   </body>
 </html>
-EOT
+      TEMPLATE
     end
 
     def format_revision
