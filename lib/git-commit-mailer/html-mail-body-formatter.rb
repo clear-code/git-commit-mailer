@@ -575,5 +575,22 @@ class GitCommitMailer
           },
           content)
     end
+
+    def commit_file_line_number_url(file, direction, line_number)
+      base_url = commit_url
+      return nil if base_url.nil?
+
+      case @mailer.repository_browser
+      when "github"
+        index = @info.file_index(file)
+        return nil if index.nil?
+        url = "#{base_url}#L#{index}"
+        url << ((direction == :from) ? "L" : "R")
+        url << line_number.to_s
+        url
+      else
+        nil
+      end
+    end
   end
 end
