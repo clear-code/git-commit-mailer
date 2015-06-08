@@ -74,13 +74,13 @@ Content-Transfer-Encoding: 8bit
         <tbody>
           <tr>
             <th class="diff-line-number" style="border: 1px solid #aaa">
-<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/820c792d967e1a27d168fc52ba75adb27c687dc2#L0L-1">...</a></span>
+<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/820c792d967e1a27d168fc52ba75adb27c687dc2#diff-cb3e0f2c76a671c083e8f001970f4631L-1">...</a></span>
 <span class="diff-line-number-nothing" style="display: block; white-space: pre">&nbsp;</span>
 </pre>
             </th>
             <th class="diff-line-number" style="border: 1px solid #aaa">
-<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/820c792d967e1a27d168fc52ba75adb27c687dc2#L0R0">...</a></span>
-<span class="diff-line-number-added" style="background-color: #aaffaa; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/820c792d967e1a27d168fc52ba75adb27c687dc2#L0R1">1</a></span>
+<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/820c792d967e1a27d168fc52ba75adb27c687dc2#diff-cb3e0f2c76a671c083e8f001970f4631">...</a></span>
+<span class="diff-line-number-added" style="background-color: #aaffaa; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/820c792d967e1a27d168fc52ba75adb27c687dc2#diff-cb3e0f2c76a671c083e8f001970f4631R1">1</a></span>
 </pre>
             </th>
             <td class="diff-content" style="border: 1px solid #aaa">

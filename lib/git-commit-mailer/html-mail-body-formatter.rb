@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+require "digest/md5"
+
 class GitCommitMailer
   class HTMLMailBodyFormatter < MailBodyFormatter
     include ERB::Util
@@ -447,7 +449,12 @@ class GitCommitMailer
 
     def span_line_number_hunk_header(file_path, direction, offset)
       content = "..."
-      url = commit_file_line_number_url(file_path, direction, offset - 1)
+      if offset <= 1
+        offset_omitted = nil
+      else
+        offset_omitted = offset - 1
+      end
+      url = commit_file_line_number_url(file_path, direction, offset_omitted)
       if url
         content = tag("a", {"href" => url}, content)
       end
@@ -582,11 +589,12 @@ class GitCommitMailer
 
       case @mailer.repository_browser
       when "github"
-        index = @info.file_index(file)
-        return nil if index.nil?
-        url = "#{base_url}#L#{index}"
-        url << ((direction == :from) ? "L" : "R")
-        url << line_number.to_s
+        file_md5 = Digest::MD5.hexdigest(file)
+        url = "#{base_url}#diff-#{file_md5}"
+        if line_number
+          url << ((direction == :from) ? "L" : "R")
+          url << line_number.to_s
+        end
         url
       else
         nil
