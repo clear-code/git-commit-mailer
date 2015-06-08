@@ -49,21 +49,6 @@ class GitCommitMailer
       end
     end
 
-    def commit_file_url(file)
-      case @mailer.repository_browser
-      when "github"
-        base_url = commit_url
-        return nil if base_url.nil?
-        index = @info.file_index(file)
-        return nil if index.nil?
-        "#{base_url}#diff-#{index}"
-      when "github-wiki"
-        commit_file_url_github_wiki(file)
-      else
-        nil
-      end
-    end
-
     def commit_file_url_github_wiki(file)
       return nil if file.nil?
 
