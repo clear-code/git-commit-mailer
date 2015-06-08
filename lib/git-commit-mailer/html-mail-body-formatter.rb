@@ -588,9 +588,8 @@ class GitCommitMailer
       when "github"
         base_url = commit_url
         return nil if base_url.nil?
-        index = @info.file_index(file)
-        return nil if index.nil?
-        "#{base_url}#diff-#{index}"
+        file_md5 = Digest::MD5.hexdigest(file)
+        "#{base_url}#diff-#{file_md5}"
       when "github-wiki"
         commit_file_url_github_wiki(file)
       else
