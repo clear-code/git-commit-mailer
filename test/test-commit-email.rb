@@ -790,7 +790,16 @@ EOR
     stub(@mailer).generate_boundary {"9c155171616a69b0feb5eb8bfc10502dfa0444ba"}
 
     create_file("README.rdoc", "= README")
-    git "commit -m %s" % shell_escape("Add README; fix #1")
+    commit_message_file = Tempfile.new("commit-message")
+    commit_message_file.puts(<<-MESSAGE)
+Add README
+
+Issue: Fix #1; ' (single quote) is marked up as numeric character reference
+Mention: Patch by @user
+Commit: 1234567 abcdef0 123456
+    MESSAGE
+    commit_message_file.close
+    git "commit --file %s" % shell_escape(commit_message_file.path)
     git "push"
 
     _, commit_mails = get_mails_of_last_push

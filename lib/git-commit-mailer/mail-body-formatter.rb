@@ -31,12 +31,8 @@ class GitCommitMailer
     def commit_url
       case @mailer.repository_browser
       when "github"
-        user = @mailer.github_user
-        repository = @mailer.github_repository
-        return nil if user.nil? or repository.nil?
-        base_url = @mailer.github_base_url
         revision = @info.revision
-        "#{base_url}/#{user}/#{repository}/commit/#{revision}"
+        commit_url_github(revision)
       when "github-wiki"
         file = (@info.updated_files + @info.added_files).first
         commit_file_url_github_wiki(file)
@@ -47,6 +43,15 @@ class GitCommitMailer
       else
         nil
       end
+    end
+
+    def commit_url_github(revision)
+      user = @mailer.github_user
+      repository = @mailer.github_repository
+      return nil if user.nil? or repository.nil?
+
+      base_url = @mailer.github_base_url
+      "#{base_url}/#{user}/#{repository}/commit/#{revision}"
     end
 
     def commit_file_url_github_wiki(file)

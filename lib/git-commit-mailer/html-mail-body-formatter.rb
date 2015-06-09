@@ -214,17 +214,57 @@ class GitCommitMailer
     def format_summary(summary)
       case @mailer.repository_browser
       when "github"
-        linked_summary = h(summary).gsub(/\#(\d+)/) do
-          %Q(<a href="#{github_issue_url($1)}">\##{$1}</a>)
-        end
-        pre(linked_summary)
+        format_summary_github(summary)
       else
         pre(h(summary))
       end
     end
 
+    GITHUB_MARKUP_PATTERN_ISSUE = /\#\d+/
+    GITHUB_MARKUP_PATTERN_COMMIT = /[\da-fA-F]{7,}/
+    GITHUB_MARKUP_PATTERN_MENTION = /@[\da-zA-Z\-]+/
+    def format_summary_github(summary)
+      formatted_summary = summary.gsub(/
+                                         ['&\"<>]|
+                                         #{GITHUB_MARKUP_PATTERN_ISSUE}|
+                                         #{GITHUB_MARKUP_PATTERN_COMMIT}|
+                                         #{GITHUB_MARKUP_PATTERN_MENTION}
+                                       /x) do |matched|
+        case matched
+        when /\A#{GITHUB_MARKUP_PATTERN_ISSUE}\z/
+          issue_number = matched.gsub(/\A\#/, "")
+          tag("a",
+              {
+                "href" => github_issue_url(issue_number),
+              },
+              h(matched))
+        when /\A#{GITHUB_MARKUP_PATTERN_COMMIT}\z/
+          revision = matched
+          tag("a",
+              {
+                "href" => commit_url_github(revision),
+              },
+              h(matched))
+        when /\A#{GITHUB_MARKUP_PATTERN_MENTION}\z/
+          user_name = matched.gsub(/\A@/, "")
+          tag("a",
+              {
+                "href" => user_url_github(user_name),
+              },
+              h(matched))
+        else
+          h(matched)
+        end
+      end
+      pre(formatted_summary)
+    end
+
     def github_issue_url(id)
       "#{@mailer.github_base_url}/#{@mailer.github_user}/#{@mailer.github_repository}/issues/#{id}"
+    end
+
+    def user_url_github(name)
+      "#{@mailer.github_base_url}/#{name}"
     end
 
     def tag_start(name, attributes)
