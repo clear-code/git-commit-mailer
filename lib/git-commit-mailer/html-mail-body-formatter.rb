@@ -72,7 +72,7 @@ class GitCommitMailer
       revision = @info.revision
       url = commit_url
       if url
-        formatted_revision = "<a href=\"#{h(url)}\">#{h(revision)}</a>"
+        formatted_revision = tag("a", {"href" => url}, h(revision))
       else
         formatted_revision = h(revision)
       end
