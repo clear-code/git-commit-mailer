@@ -1,5 +1,19 @@
 # News
 
+## 1.0.2 - 2015-06-09 {#version-1-0-2}
+
+GitHub support improvement release!
+
+### Improvements
+
+  * Supported GitHub mention link by `@XXX` form in commit message.
+  * Supported GitHub commit link by `HHHHHHH` form in commit message.
+
+### Fixes
+
+  * Fixed a bug that single quote in commit message is treated as
+    GitHub issue link.
+
 ## 1.0.1 - 2015-06-09 {#version-1-0-1}
 
 GitHub support improvement release!
