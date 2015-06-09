@@ -22,9 +22,7 @@
   <item rdf:about="http://git.example.com/sample-repo.git/commit/?id=cf105ee52d4d97efd8f97915b9cf7d6ab2eb79b1">
     <title>[master] an initial commit</title>
     <link>http://git.example.com/sample-repo.git/commit/?id=cf105ee52d4d97efd8f97915b9cf7d6ab2eb79b1</link>
-    <description>an initial commit
-
-</description>
+    <description>an initial commit</description>
     <content:encoded>&lt;pre&gt;User Name	2010-01-13 15:15:43 +0900 (Wed, 13 Jan 2010)
 
   New Revision: cf105ee52d4d97efd8f97915b9cf7d6ab2eb79b1

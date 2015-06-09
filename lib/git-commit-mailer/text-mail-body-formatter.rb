@@ -38,7 +38,7 @@ class GitCommitMailer
 
 <% end %>
   Message:
-<% @info.summary.rstrip.each_line do |line| %>
+<% @info.summary.each_line do |line| %>
     <%= line.rstrip %>
 <% end %>
 

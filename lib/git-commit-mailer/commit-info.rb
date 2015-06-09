@@ -178,7 +178,7 @@ class GitCommitMailer
       @date = Time.at(date.to_i)
       @subject = subject
       @parent_revisions = parent_revisions.split
-      @summary = git("log -n 1 --pretty=format:%s%n%n%b #{@revision}")
+      @summary = git("log -n 1 --pretty=format:%B #{@revision}").rstrip
     end
 
     def parse_diff
