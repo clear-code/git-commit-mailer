@@ -28,11 +28,11 @@ license/GPL-3.txt for details.
 $ gem install git-commit-mailer
 ~~~
 
-git-commit-mailer utilizes git's hook functionality to send
+git-commit-mailer utilizes Git's hook functionality to send
 commit mails.
 
 Edit "post-receive" shell script file to execute it from there,
-which is located under "hooks" directory in a git repository.
+which is located under "hooks" directory in a Git repository.
 
 Example:
 
