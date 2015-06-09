@@ -2,7 +2,7 @@
 
 # GitCommitMailer
 
-A utility to send commit mails for commits pushed to git repositories.
+A utility to send commit mails for commits pushed to Git repositories.
 
 See also [Git](http://git-scm.com/).
 
