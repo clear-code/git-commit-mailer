@@ -37,10 +37,10 @@ which is located under "hooks" directory in a git repository.
 Example:
 
 ~~~
-    git-commit-mailer \
-      --from-domain=example.com \
-      --error-to=onodera@example.com \
-      commit@example.com
+git-commit-mailer \
+  --from-domain=example.com \
+  --error-to=onodera@example.com \
+  commit@example.com
 ~~~
 
 For more detailed usage and options, execute git-commit-mailer
