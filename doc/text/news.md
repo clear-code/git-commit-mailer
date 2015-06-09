@@ -1,5 +1,11 @@
 # News
 
+## 1.0.3 - 2015-06-09 {#version-1-0-3}
+
+### Improvements
+
+  * Improved commit message format in HTML. Raw commit message is used.
+
 ## 1.0.2 - 2015-06-09 {#version-1-0-2}
 
 GitHub support improvement release!
