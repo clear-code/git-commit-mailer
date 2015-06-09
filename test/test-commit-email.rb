@@ -1076,7 +1076,9 @@ module HookModeTest
     end
 
     def assert_header(expected_header, actual_header)
-      assert_equal(expected_header, actual_header)
+      assert_equal(expected_header,
+                   actual_header.gsub(/^(X-Mailer: GitCommitMailer) [\d.]+;/,
+                                      "\\1 1.0.0;"))
     end
 
     def assert_body(expected_body, actual_body)
@@ -1209,15 +1211,15 @@ module TrackRemoteModeTest
     end
 
     def assert_header(expected_header, actual_header)
-      assert_equal(expected_header.gsub(/^X-Git-Refname: refs\/heads\/master$/,
-                                        'X-Git-Refname: refs/remotes/origin/master'),
-                   actual_header)
+      super(expected_header.gsub(/^X-Git-Refname: refs\/heads\/master$/,
+                                 'X-Git-Refname: refs/remotes/origin/master'),
+            actual_header)
     end
 
     def assert_body(expected_body, actual_body)
-      assert_equal(expected_body.gsub(/refs\/heads\/master/,
-                                      'refs/remotes/origin/master'),
-                   actual_body)
+      super(expected_body.gsub(/refs\/heads\/master/,
+                               'refs/remotes/origin/master'),
+            actual_body)
     end
   end
 
