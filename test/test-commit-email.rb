@@ -795,6 +795,7 @@ EOR
 Add README
 
 Issue: Fix #1; ' (single quote) is marked up as numeric character reference
+Email: user@example.com
 Mention: Patch by @user
 Commit: 1234567 abcdef0 123456
     MESSAGE

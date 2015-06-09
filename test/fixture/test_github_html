@@ -1,15 +1,15 @@
 X-Git-Author: User Name
-X-Git-Revision: 8e8043480053010f8e3bd18777c74a4ed1d2ff2b
+X-Git-Revision: f2b1ffe26c18020760cf362951b1a1c614d291af
 X-Git-Repository: XXX
-X-Git-Commit-Id: 8e8043480053010f8e3bd18777c74a4ed1d2ff2b
-Message-ID: <8e8043480053010f8e3bd18777c74a4ed1d2ff2b@git-utils.example.com>
+X-Git-Commit-Id: f2b1ffe26c18020760cf362951b1a1c614d291af
+Message-ID: <f2b1ffe26c18020760cf362951b1a1c614d291af@git-utils.example.com>
 X-Mailer: GitCommitMailer 1.0.0; https://github.com/clear-code/git-commit-mailer
 MIME-Version: 1.0
 Content-Type: multipart/alternative;
  boundary=9c155171616a69b0feb5eb8bfc10502dfa0444ba
 From: User Name <user@example.com>
 To: to@example
-Subject: sample-repo@8e80434 [master] Add README
+Subject: sample-repo@f2b1ffe [master] Add README
 Date: Wed, 13 Jan 2010 15:15:43 +0900
 
 --9c155171616a69b0feb5eb8bfc10502dfa0444ba
@@ -18,13 +18,14 @@ Content-Transfer-Encoding: 8bit
 
 User Name	2010-01-13 15:15:43 +0900 (Wed, 13 Jan 2010)
 
-  New Revision: 8e8043480053010f8e3bd18777c74a4ed1d2ff2b
-  https://github.com/clear-code/git-commit-mailer/commit/8e8043480053010f8e3bd18777c74a4ed1d2ff2b
+  New Revision: f2b1ffe26c18020760cf362951b1a1c614d291af
+  https://github.com/clear-code/git-commit-mailer/commit/f2b1ffe26c18020760cf362951b1a1c614d291af
 
   Message:
     Add README
     
     Issue: Fix #1; ' (single quote) is marked up as numeric character reference
+    Email: user@example.com
     Mention: Patch by @user
     Commit: 1234567 abcdef0 123456
 
@@ -53,17 +54,18 @@ Content-Transfer-Encoding: 8bit
       <dt style="clear: both; float: left; font-weight: bold; width: 8em">Date</dt>
       <dd style="margin-left: 8.5em">2010-01-13 15:15:43 +0900 (Wed, 13 Jan 2010)</dd>
       <dt style="clear: both; float: left; font-weight: bold; width: 8em">New Revision</dt>
-      <dd style="margin-left: 8.5em"><a href="https://github.com/clear-code/git-commit-mailer/commit/8e8043480053010f8e3bd18777c74a4ed1d2ff2b">8e8043480053010f8e3bd18777c74a4ed1d2ff2b</a></dd>
+      <dd style="margin-left: 8.5em"><a href="https://github.com/clear-code/git-commit-mailer/commit/f2b1ffe26c18020760cf362951b1a1c614d291af">f2b1ffe26c18020760cf362951b1a1c614d291af</a></dd>
       <dt style="clear: both; float: left; font-weight: bold; width: 8em">Message</dt>
       <dd style="margin-left: 8.5em"><pre style="border: 1px solid #aaa; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; padding: 0.5em; width: auto">Add README
 
 Issue: Fix <a href="https://github.com/clear-code/git-commit-mailer/issues/1">#1</a>; &#39; (single quote) is marked up as numeric character reference
+Email: user@example.com
 Mention: Patch by <a href="https://github.com/user">@user</a>
 Commit: <a href="https://github.com/clear-code/git-commit-mailer/commit/1234567">1234567</a> <a href="https://github.com/clear-code/git-commit-mailer/commit/abcdef0">abcdef0</a> 123456</pre></dd>
       <dt style="clear: both; float: left; font-weight: bold; width: 8em">Added files</dt>
       <dd style="margin-left: 8.5em">
         <ul>
-          <li><a href="https://github.com/clear-code/git-commit-mailer/commit/8e8043480053010f8e3bd18777c74a4ed1d2ff2b#diff-cb3e0f2c76a671c083e8f001970f4631">README.rdoc</a></li>
+          <li><a href="https://github.com/clear-code/git-commit-mailer/commit/f2b1ffe26c18020760cf362951b1a1c614d291af#diff-cb3e0f2c76a671c083e8f001970f4631">README.rdoc</a></li>
         </ul>
       </dd>
     </dl>
@@ -82,13 +84,13 @@ Commit: <a href="https://github.com/clear-code/git-commit-mailer/commit/1234567"
         <tbody>
           <tr>
             <th class="diff-line-number" style="border: 1px solid #aaa">
-<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/8e8043480053010f8e3bd18777c74a4ed1d2ff2b#diff-cb3e0f2c76a671c083e8f001970f4631">...</a></span>
+<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/f2b1ffe26c18020760cf362951b1a1c614d291af#diff-cb3e0f2c76a671c083e8f001970f4631">...</a></span>
 <span class="diff-line-number-nothing" style="display: block; white-space: pre">&nbsp;</span>
 </pre>
             </th>
             <th class="diff-line-number" style="border: 1px solid #aaa">
-<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/8e8043480053010f8e3bd18777c74a4ed1d2ff2b#diff-cb3e0f2c76a671c083e8f001970f4631">...</a></span>
-<span class="diff-line-number-added" style="background-color: #aaffaa; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/8e8043480053010f8e3bd18777c74a4ed1d2ff2b#diff-cb3e0f2c76a671c083e8f001970f4631R1">1</a></span>
+<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/f2b1ffe26c18020760cf362951b1a1c614d291af#diff-cb3e0f2c76a671c083e8f001970f4631">...</a></span>
+<span class="diff-line-number-added" style="background-color: #aaffaa; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/f2b1ffe26c18020760cf362951b1a1c614d291af#diff-cb3e0f2c76a671c083e8f001970f4631R1">1</a></span>
 </pre>
             </th>
             <td class="diff-content" style="border: 1px solid #aaa">
