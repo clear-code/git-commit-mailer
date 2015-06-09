@@ -20,7 +20,7 @@ doc/text/GPL-3.txt for details.
 ## Dependencies
 
 * Ruby >= 1.9.3
-* git >= 1.7
+* Git >= 1.7
 
 ## Install
 
