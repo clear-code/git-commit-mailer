@@ -15,7 +15,7 @@ See also [Git](http://git-scm.com/).
 ## License
 
 GitCommitMailer is licensed under GPLv3 or later. See
-license/GPL-3.txt for details.
+doc/text/GPL-3.txt for details.
 
 ## Dependencies
 
