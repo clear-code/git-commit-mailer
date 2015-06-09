@@ -43,5 +43,5 @@ Example:
       commit@example.com
 ~~~
 
-For more detailed usage and options, execute commit-email.rb
+For more detailed usage and options, execute git-commit-mailer
 with `--help` option.
