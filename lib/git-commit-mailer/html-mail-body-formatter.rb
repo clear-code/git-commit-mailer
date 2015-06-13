@@ -47,13 +47,13 @@ class GitCommitMailer
       <%= dd_start %>
         <ul>
 <%   @info.merge_messages.each do |message| %>
-          <li><%= h(message) %></li>
+          <li><%= format_message(message) %></li>
 <%   end %>
         </ul>
       </dd>
 <% end %>
       <%= dt("Message") %>
-      <%= dd(format_summary(@info.summary.strip)) %>
+      <%= dd(pre(format_message(@info.summary))) %>
 <%= format_files("Added",        @info.added_files) %>
 <%= format_files("Copied",       @info.copied_files) %>
 <%= format_files("Removed",      @info.deleted_files) %>
@@ -211,12 +211,13 @@ class GitCommitMailer
       [from_line_column, to_line_column, content_column]
     end
 
-    def format_summary(summary)
+    def format_message(message)
+      message = message.strip
       case @mailer.repository_browser
       when "github"
-        format_summary_github(summary)
+        format_message_github(message)
       else
-        pre(h(summary))
+        h(message)
       end
     end
 
@@ -225,14 +226,14 @@ class GitCommitMailer
     GITHUB_MARKUP_PATTERN_ISSUE = /\#\d+/
     GITHUB_MARKUP_PATTERN_COMMIT = /[\da-fA-F]{7,}/
     GITHUB_MARKUP_PATTERN_MENTION = /@[\da-zA-Z\-]+/
-    def format_summary_github(summary)
-      formatted_summary = summary.gsub(/
-                                         #{PATTERN_HTML_SPECIAL_CHARACTER}|
-                                         #{PATTERN_EMAIL}|
-                                         #{GITHUB_MARKUP_PATTERN_ISSUE}|
-                                         #{GITHUB_MARKUP_PATTERN_COMMIT}|
-                                         #{GITHUB_MARKUP_PATTERN_MENTION}
-                                       /x) do |matched|
+    def format_message_github(message)
+      message.gsub(/
+                     #{PATTERN_HTML_SPECIAL_CHARACTER}|
+                     #{PATTERN_EMAIL}|
+                     #{GITHUB_MARKUP_PATTERN_ISSUE}|
+                     #{GITHUB_MARKUP_PATTERN_COMMIT}|
+                     #{GITHUB_MARKUP_PATTERN_MENTION}
+                   /x) do |matched|
         case matched
         when /\A#{PATTERN_HTML_SPECIAL_CHARACTER}\z/
           h(matched)
@@ -263,7 +264,6 @@ class GitCommitMailer
           h(matched)
         end
       end
-      pre(formatted_summary)
     end
 
     def github_issue_url(id)
