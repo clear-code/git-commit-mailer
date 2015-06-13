@@ -220,19 +220,24 @@ class GitCommitMailer
       end
     end
 
+    PATTERN_HTML_SPECIAL_CHARACTER = /['&\"<>]/
+    PATTERN_EMAIL = /[\da-zA-Z\-_]+@[\da-zA-Z\-_.]+/
     GITHUB_MARKUP_PATTERN_ISSUE = /\#\d+/
     GITHUB_MARKUP_PATTERN_COMMIT = /[\da-fA-F]{7,}/
-    PATTERN_EMAIL = /[\da-zA-Z\-_]+@[\da-zA-Z\-_.]+/
     GITHUB_MARKUP_PATTERN_MENTION = /@[\da-zA-Z\-]+/
     def format_summary_github(summary)
       formatted_summary = summary.gsub(/
-                                         ['&\"<>]|
+                                         #{PATTERN_HTML_SPECIAL_CHARACTER}|
+                                         #{PATTERN_EMAIL}|
                                          #{GITHUB_MARKUP_PATTERN_ISSUE}|
                                          #{GITHUB_MARKUP_PATTERN_COMMIT}|
-                                         #{PATTERN_EMAIL}|
                                          #{GITHUB_MARKUP_PATTERN_MENTION}
                                        /x) do |matched|
         case matched
+        when /\A#{PATTERN_HTML_SPECIAL_CHARACTER}\z/
+          h(matched)
+        when /\A#{PATTERN_EMAIL}\z/
+          h(matched)
         when /\A#{GITHUB_MARKUP_PATTERN_ISSUE}\z/
           issue_number = matched.gsub(/\A\#/, "")
           tag("a",
@@ -247,8 +252,6 @@ class GitCommitMailer
                 "href" => commit_url_github(revision),
               },
               h(matched))
-        when /\A#{PATTERN_EMAIL}\z/
-          h(matched)
         when /\A#{GITHUB_MARKUP_PATTERN_MENTION}\z/
           user_name = matched.gsub(/\A@/, "")
           tag("a",

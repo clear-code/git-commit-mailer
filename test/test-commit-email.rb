@@ -794,10 +794,14 @@ EOR
     commit_message_file.puts(<<-MESSAGE)
 Add README
 
-Issue: Fix #1; ' (single quote) is marked up as numeric character reference
-Email: user@example.com
+Issue: #1
+Numeric character reference: like issue: ' (single quote)
+Email: normal: user@example.com
+Email: like commit: 1234567@example.com
 Mention: Patch by @user
-Commit: 1234567 abcdef0 123456
+Commit: only number: 1234567
+Commit: with alphabet: abcdef0
+Commit: short: 123456
     MESSAGE
     commit_message_file.close
     git "commit --file %s" % shell_escape(commit_message_file.path)
