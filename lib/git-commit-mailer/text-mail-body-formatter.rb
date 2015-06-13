@@ -31,9 +31,9 @@ class GitCommitMailer
   New Revision: <%= @info.revision %>
 <%= format_commit_url %>
 
-<% unless @info.merge_status.empty? %>
-<%   @info.merge_status.each do |status| %>
-  <%= status %>
+<% unless @info.merge_messages.empty? %>
+<%   @info.merge_messages.each do |message| %>
+  <%= message %>
 <%   end %>
 
 <% end %>

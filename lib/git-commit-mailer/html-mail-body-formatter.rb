@@ -42,12 +42,12 @@ class GitCommitMailer
       <%= dd(h(@mailer.format_time(@info.date))) %>
       <%= dt("New Revision") %>
       <%= dd(format_revision) %>
-<% unless @info.merge_status.empty? %>
+<% unless @info.merge_messages.empty? %>
       <%= dt("Merge") %>
       <%= dd_start %>
         <ul>
-<%   @info.merge_status.each do |status| %>
-          <li><%= h(status) %></li>
+<%   @info.merge_messages.each do |message| %>
+          <li><%= h(message) %></li>
 <%   end %>
         </ul>
       </dd>

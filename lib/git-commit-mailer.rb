@@ -1037,8 +1037,8 @@ EOF
         end
 
         merge_message = "Merged #{merge_commit.short_revision}: #{merge_commit.subject}"
-        if not is_traversing_first_parent and not commit_info.merge_status.index(merge_message)
-          commit_info.merge_status << merge_message
+        if not is_traversing_first_parent and not commit_info.merge_messages.index(merge_message)
+          commit_info.merge_messages << merge_message
           commit_info.merge_commits << merge_commit
         end
 

@@ -44,7 +44,7 @@ class GitCommitMailer
     attr_reader :added_files, :copied_files, :deleted_files, :updated_files
     attr_reader :renamed_files, :type_changed_files, :diffs
     attr_reader :subject, :author_name, :author_email, :date, :summary
-    attr_accessor :merge_status
+    attr_accessor :merge_messages
     attr_writer :reference
     attr_reader :merge_commits
     def initialize(mailer, reference, revision)
@@ -64,7 +64,7 @@ class GitCommitMailer
       parse_file_status
       parse_diff
 
-      @merge_status = []
+      @merge_messages = []
       @merge_commits = []
     end
 
