@@ -223,6 +223,7 @@ class GitCommitMailer
 
     PATTERN_HTML_SPECIAL_CHARACTER = /['&\"<>]/
     PATTERN_EMAIL = /[\da-zA-Z\-_]+@[\da-zA-Z\-_.]+/
+    GITHUB_MARKUP_PATTERN_GH_ISSUE = /GH-\d+/
     GITHUB_MARKUP_PATTERN_ISSUE = /\#\d+/
     GITHUB_MARKUP_PATTERN_COMMIT = /[\da-fA-F]{7,}/
     GITHUB_MARKUP_PATTERN_MENTION = /@[\da-zA-Z\-]+/
@@ -230,6 +231,7 @@ class GitCommitMailer
       message.gsub(/
                      #{PATTERN_HTML_SPECIAL_CHARACTER}|
                      #{PATTERN_EMAIL}|
+                     #{GITHUB_MARKUP_PATTERN_GH_ISSUE}|
                      #{GITHUB_MARKUP_PATTERN_ISSUE}|
                      #{GITHUB_MARKUP_PATTERN_COMMIT}|
                      #{GITHUB_MARKUP_PATTERN_MENTION}
@@ -239,6 +241,13 @@ class GitCommitMailer
           h(matched)
         when /\A#{PATTERN_EMAIL}\z/
           h(matched)
+        when /\A#{GITHUB_MARKUP_PATTERN_GH_ISSUE}\z/
+          issue_number = matched.gsub(/\AGH-/, "")
+          tag("a",
+              {
+                "href" => github_issue_url(issue_number),
+              },
+              h(matched))
         when /\A#{GITHUB_MARKUP_PATTERN_ISSUE}\z/
           issue_number = matched.gsub(/\A\#/, "")
           tag("a",

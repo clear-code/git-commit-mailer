@@ -794,7 +794,8 @@ EOR
     commit_message_file.puts(<<-MESSAGE)
 Add README
 
-Issue: #1
+Issue: hash prefix: #1
+Issue: GH- prefix: GH-1
 Numeric character reference: like issue: ' (single quote)
 Email: normal: user@example.com
 Email: like commit: 1234567@example.com
