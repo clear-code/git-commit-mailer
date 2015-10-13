@@ -1,0 +1,126 @@
+X-Git-Author: User Name
+X-Git-Revision: 39a9d83ed08c5cf66ecd1546d303693637ff6597
+X-Git-Repository: XXX
+X-Git-Commit-Id: 39a9d83ed08c5cf66ecd1546d303693637ff6597
+Message-ID: <39a9d83ed08c5cf66ecd1546d303693637ff6597@git-utils.example.com>
+X-Mailer: GitCommitMailer 1.0.0; https://github.com/clear-code/git-commit-mailer
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary=9c155171616a69b0feb5eb8bfc10502dfa0444ba
+From: User Name <user@example.com>
+To: to@example
+Subject: sample-repo@39a9d83 [master] Add more descriptions
+Date: Wed, 13 Jan 2010 15:15:44 +0900
+
+--9c155171616a69b0feb5eb8bfc10502dfa0444ba
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+User Name	2010-01-13 15:15:44 +0900 (Wed, 13 Jan 2010)
+
+  New Revision: 39a9d83ed08c5cf66ecd1546d303693637ff6597
+  https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597
+
+  Message:
+    Add more descriptions
+
+  Modified files:
+    README.rdoc
+
+  Modified: README.rdoc (+5 -1)
+===================================================================
+--- README.rdoc    2010-01-13 15:15:43 +0900 (d8250e1)
++++ README.rdoc    2010-01-13 15:15:44 +0900 (3c6921e)
+@@ -1,3 +1,7 @@
+-= README
++= README for git-utils
+ 
+ git-utils is ...
++
++== Thanks
++
++  * ...
+
+--9c155171616a69b0feb5eb8bfc10502dfa0444ba
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <dl style="line-height: 1.5; margin-left: 2em">
+      <dt style="clear: both; float: left; font-weight: bold; width: 8em">Author</dt>
+      <dd style="margin-left: 8.5em">User Name &lt;user@example.com&gt;</dd>
+      <dt style="clear: both; float: left; font-weight: bold; width: 8em">Date</dt>
+      <dd style="margin-left: 8.5em">2010-01-13 15:15:44 +0900 (Wed, 13 Jan 2010)</dd>
+      <dt style="clear: both; float: left; font-weight: bold; width: 8em">New Revision</dt>
+      <dd style="margin-left: 8.5em"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597">39a9d83ed08c5cf66ecd1546d303693637ff6597</a></dd>
+      <dt style="clear: both; float: left; font-weight: bold; width: 8em">Message</dt>
+      <dd style="margin-left: 8.5em"><pre style="border: 1px solid #aaa; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; padding: 0.5em; width: auto">Add more descriptions</pre></dd>
+      <dt style="clear: both; float: left; font-weight: bold; width: 8em">Modified files</dt>
+      <dd style="margin-left: 8.5em">
+        <ul>
+          <li><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631">README.rdoc</a></li>
+        </ul>
+      </dd>
+    </dl>
+
+    <div class="diff-section" style="clear: both">
+      <table style="border-collapse: collapse; border: 1px solid #aaa">
+        <thead>
+          <tr class="diff-header" style="border: 1px solid #aaa">
+            <td colspan="3">
+<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-header" style="background-color: #eaf2f5; color: #999999; display: block; white-space: pre">  Modified: README.rdoc (+5 -1)</span>
+<span class="diff-header-mark" style="background-color: #eaf2f5; color: #999999; display: block; white-space: pre">===================================================================</span>
+</pre>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="diff-line-number" style="border: 1px solid #aaa">
+<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631">...</a></span>
+<span class="diff-line-number-deleted" style="background-color: #ffdddd; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631L1">1</a></span>
+<span class="diff-line-number-nothing" style="display: block; white-space: pre">&nbsp;</span>
+<span class="diff-line-number-not-changed" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631L2">2</a></span>
+<span class="diff-line-number-not-changed" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631L3">3</a></span>
+<span class="diff-line-number-nothing" style="display: block; white-space: pre">&nbsp;</span>
+<span class="diff-line-number-nothing" style="display: block; white-space: pre">&nbsp;</span>
+<span class="diff-line-number-nothing" style="display: block; white-space: pre">&nbsp;</span>
+<span class="diff-line-number-nothing" style="display: block; white-space: pre">&nbsp;</span>
+</pre>
+            </th>
+            <th class="diff-line-number" style="border: 1px solid #aaa">
+<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631">...</a></span>
+<span class="diff-line-number-nothing" style="display: block; white-space: pre">&nbsp;</span>
+<span class="diff-line-number-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631R1">1</a></span>
+<span class="diff-line-number-not-changed" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631R2">2</a></span>
+<span class="diff-line-number-not-changed" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631R3">3</a></span>
+<span class="diff-line-number-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631R4">4</a></span>
+<span class="diff-line-number-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631R5">5</a></span>
+<span class="diff-line-number-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631R6">6</a></span>
+<span class="diff-line-number-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-utils/commit/39a9d83ed08c5cf66ecd1546d303693637ff6597#diff-cb3e0f2c76a671c083e8f001970f4631R7">7</a></span>
+</pre>
+            </th>
+            <td class="diff-content" style="border: 1px solid #aaa">
+<pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-hunk-header" style="background-color: #eaf2f5; color: #999999; display: block; white-space: pre">@@ -1,3 +1,7 @@</span>
+<span class="diff-deleted" style="background-color: #ffdddd; color: #000000; display: block; white-space: pre">-= README</span>
+<span class="diff-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre">+= README<span class="diff-added-word" style="background-color: #a6f3a6; color: #000000"> for git-utils</span></span>
+<span class="diff-not-changed" style="display: block; white-space: pre"> </span>
+<span class="diff-not-changed" style="display: block; white-space: pre"> git-utils is ...</span>
+<span class="diff-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre">+</span>
+<span class="diff-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre">+== Thanks</span>
+<span class="diff-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre">+</span>
+<span class="diff-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre">+  * ...</span>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
+
+--9c155171616a69b0feb5eb8bfc10502dfa0444ba--

@@ -18,6 +18,8 @@
 
 require "digest/md5"
 
+require "diff/lcs"
+
 class GitCommitMailer
   class HTMLMailBodyFormatter < MailBodyFormatter
     include ERB::Util
@@ -170,6 +172,8 @@ class GitCommitMailer
       from_line_column = ""
       to_line_column = ""
       content_column = ""
+      content_lines = []
+
       file_path = diff.file_path
       diff.changes.each do |type, line_number, line|
         case type
@@ -179,6 +183,8 @@ class GitCommitMailer
                                                            from_line_number)
           to_line_column << span_line_number_hunk_header(file_path, :to,
                                                          to_line_number)
+
+          flush_content_lines(content_column, content_lines)
           case line
           when /\A(@@[\s0-9\-+,]+@@\s*)(.+)(\s*)\z/
             hunk_info = $1
@@ -187,28 +193,113 @@ class GitCommitMailer
           else
             formatted_line = h(line)
           end
-          content_column << span_diff_hunk_header(formatted_line)
+          content_column << span_diff_hunk_header(formatted_line) << "\n"
         when :added
           from_line_column << span_line_number_nothing
           to_line_column << span_line_number_added(file_path, line_number)
-          content_column << span_diff_added(h(line))
+          content_lines << [:added, line]
         when :deleted
           from_line_column << span_line_number_deleted(file_path, line_number)
           to_line_column << span_line_number_nothing
-          content_column << span_diff_deleted(h(line))
+          content_lines << [:deleted, line]
         when :not_changed
           from_line_number, to_line_number = line_number
           from_line_column << span_line_number_not_changed(file_path, :from,
                                                            from_line_number)
           to_line_column << span_line_number_not_changed(file_path, :to,
                                                          to_line_number)
-          content_column << span_diff_not_changed(h(line))
+          flush_content_lines(content_column, content_lines)
+          content_column << span_diff_not_changed(h(line)) << "\n"
         end
         from_line_column << "\n"
         to_line_column << "\n"
-        content_column << "\n"
       end
+      flush_content_lines(content_column, content_lines)
       [from_line_column, to_line_column, content_column]
+    end
+
+    def flush_content_lines(column, lines)
+      return if lines.empty?
+
+      added_lines = []
+      deleted_lines = []
+      lines.each do |type, line|
+        if type == :added
+          added_lines << line
+        else
+          deleted_lines << line
+        end
+      end
+
+      if added_lines.size == deleted_lines.size
+        nth_added = 0
+        nth_deleted = 0
+        lines.each do |type, line|
+          if type == :added
+            deleted_line = deleted_lines[nth_added]
+            formatted_added_line = format_added_words(line, deleted_line)
+            column << span_diff_added(formatted_added_line) << "\n"
+            nth_added += 1
+          else
+            added_line = added_lines[nth_deleted]
+            formatted_deleted_line = format_deleted_words(line, added_line)
+            column << span_diff_deleted(formatted_deleted_line) << "\n"
+            nth_deleted += 1
+          end
+        end
+      else
+        lines.each do |type, line|
+          if type == :added
+            column << span_diff_added(h(line)) << "\n"
+          else
+            column << span_diff_deleted(h(line)) << "\n"
+          end
+        end
+      end
+      lines.clear
+    end
+
+    def format_changed_words(from_line, to_line, &formatter)
+      line = h(from_line[0, 1])
+      changed_chars = ""
+
+      flush_changed_chars = lambda do
+        unless changed_chars.empty?
+          line << formatter.call(h(changed_chars))
+          changed_chars.clear
+        end
+      end
+
+      Diff::LCS.sdiff(from_line[1..-1], to_line[1..-1]).each do |diff|
+        action, from, _to = *diff
+        _from_nth, from_char = from
+        next if from_char.nil?
+
+        case action
+        when "="
+          flush_changed_chars.call
+          line << h(from_char)
+        when "!", "-"
+          changed_chars << from_char
+        when "+"
+          flush_changed_chars.call
+        end
+      end
+      flush_changed_chars.call
+
+      line
+    end
+
+    def format_added_words(added_line, deleted_line)
+      format_changed_words(added_line, deleted_line) do |chars|
+        span_diff_added_word(chars)
+      end
+    end
+
+    def format_deleted_words(deleted_line, added_line)
+      format_changed_words(deleted_line, added_line) do |chars|
+        span_diff_deleted_word(chars)
+      end
     end
 
     def format_message(message)
@@ -478,14 +569,28 @@ class GitCommitMailer
 
     def span_deleted_styles
       {
-        "background-color" => "#ffaaaa",
+        "background-color" => "#ffdddd",
+        "color"            => "#000000",
+      }
+    end
+
+    def span_deleted_word_styles
+      {
+        "background-color" => "#f8cbcb",
         "color"            => "#000000",
       }
     end
 
     def span_added_styles
       {
-        "background-color" => "#aaffaa",
+        "background-color" => "#dbffdb",
+        "color"            => "#000000",
+      }
+    end
+
+    def span_added_word_styles
+      {
+        "background-color" => "#a6f3a6",
         "color"            => "#000000",
       }
     end
@@ -621,11 +726,29 @@ class GitCommitMailer
           content)
     end
 
+    def span_diff_deleted_word(content)
+      tag("span",
+          {
+            "class" => "diff-deleted-word",
+            "style" => span_deleted_word_styles,
+          },
+          content)
+    end
+
     def span_diff_added(content)
       tag("span",
           {
             "class" => "diff-added",
             "style" => span_diff_styles.merge(span_added_styles),
+          },
+          content)
+    end
+
+    def span_diff_added_word(content)
+      tag("span",
+          {
+            "class" => "diff-added-word",
+            "style" => span_added_word_styles,
           },
           content)
     end

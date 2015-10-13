@@ -773,12 +773,13 @@ git-utils is ...
 
   * ...
     README
-    git "commit -m %s" % shell_escape("Add more descriotions")
+    git "commit -m %s" % shell_escape("Add more descriptions")
 
     git "push"
 
     _, commit_mails = get_mails_of_last_push
-    assert_mail('test_html', commit_mails.first)
+    assert_mail('test_html_add', commit_mails.first)
+    assert_mail('test_html_diff', commit_mails[1])
   end
 
   def test_github_html
