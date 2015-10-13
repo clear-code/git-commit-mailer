@@ -757,14 +757,14 @@ module GitCommitMailerOptionTest
     create_default_mailer
     stub(@mailer).generate_boundary {"9c155171616a69b0feb5eb8bfc10502dfa0444ba"}
 
-    create_file("README.rdoc", <<-EOR)
+    create_file("README.rdoc", <<-README)
 = README
 
 git-utils is ...
-EOR
+    README
     git "commit -m %s" % shell_escape("Add README")
 
-    create_file("README.rdoc", <<-EOR)
+    create_file("README.rdoc", <<-README)
 = README for git-utils
 
 git-utils is ...
@@ -772,7 +772,7 @@ git-utils is ...
 == Thanks
 
   * ...
-EOR
+    README
     git "commit -m %s" % shell_escape("Add more descriotions")
 
     git "push"
