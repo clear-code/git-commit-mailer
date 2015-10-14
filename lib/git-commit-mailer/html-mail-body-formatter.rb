@@ -569,7 +569,7 @@ class GitCommitMailer
 
     def span_deleted_styles
       {
-        "background-color" => "#ffdddd",
+        "background-color" => "#ffecec",
         "color"            => "#000000",
       }
     end
@@ -583,7 +583,7 @@ class GitCommitMailer
 
     def span_added_styles
       {
-        "background-color" => "#dbffdb",
+        "background-color" => "#eaffea",
         "color"            => "#000000",
       }
     end

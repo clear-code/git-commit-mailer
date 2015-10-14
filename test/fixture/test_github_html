@@ -100,12 +100,12 @@ Commit: short: 123456</pre></dd>
             </th>
             <th class="diff-line-number" style="border: 1px solid #aaa">
 <pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-line-number-hunk-header" style="display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/3240686f89dc2da628c13fb0fe52ee314a41d18a#diff-cb3e0f2c76a671c083e8f001970f4631">...</a></span>
-<span class="diff-line-number-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/3240686f89dc2da628c13fb0fe52ee314a41d18a#diff-cb3e0f2c76a671c083e8f001970f4631R1">1</a></span>
+<span class="diff-line-number-added" style="background-color: #eaffea; color: #000000; display: block; white-space: pre"><a href="https://github.com/clear-code/git-commit-mailer/commit/3240686f89dc2da628c13fb0fe52ee314a41d18a#diff-cb3e0f2c76a671c083e8f001970f4631R1">1</a></span>
 </pre>
             </th>
             <td class="diff-content" style="border: 1px solid #aaa">
 <pre style="border: 0; font-family: Consolas, Menlo, &quot;Liberation Mono&quot;, Courier, monospace; line-height: 1.2; margin: 0; padding: 0.5em; white-space: normal; width: auto"><span class="diff-hunk-header" style="background-color: #eaf2f5; color: #999999; display: block; white-space: pre">@@ -0,0 +1 @@</span>
-<span class="diff-added" style="background-color: #dbffdb; color: #000000; display: block; white-space: pre">+= README</span>
+<span class="diff-added" style="background-color: #eaffea; color: #000000; display: block; white-space: pre">+= README</span>
 </pre>
             </td>
           </tr>
