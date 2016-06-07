@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-#
 # Copyright (C) 2009  Ryo Onodera <onodera@clear-code.com>
-# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -559,11 +557,22 @@ class GitCommitMailer
       if /\A[^\s<]+@[^\s>]\z/ =~ @from
         @from
       else
-        "#{info.author_name} <#{@from}>"
+        "#{format_name(info.author_name)} <#{@from}>"
       end
     else
-      # return "#{info.author_name}@#{@from_domain}".sub(/@\z/, '') if @from_domain
-      "#{info.author_name} <#{info.author_email}>"
+      "#{format_name(info.author_name)} <#{info.author_email}>"
+    end
+  end
+
+  def format_name(name)
+    case name
+    when /[,"\\]/
+      escaped_name = name.gsub(/["\\]/) do |special_character|
+        "\\#{special_character}"
+      end
+      "\"#{escaped_name}\""
+    else
+      name
     end
   end
 

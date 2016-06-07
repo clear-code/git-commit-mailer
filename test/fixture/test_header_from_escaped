@@ -1,0 +1,30 @@
+X-Git-Author: User, Name \(^^")/
+X-Git-Revision: c89a314bb3e04d77376ddfe15e3f81d46bb1e083
+X-Git-Repository: XXX
+X-Git-Commit-Id: c89a314bb3e04d77376ddfe15e3f81d46bb1e083
+Message-ID: <c89a314bb3e04d77376ddfe15e3f81d46bb1e083@git-utils.example.com>
+X-Mailer: GitCommitMailer 1.0.0; https://github.com/clear-code/git-commit-mailer
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+From: "User, Name \\(^^\")/" <user@example.com>
+To: to@example
+Subject: sample-repo@c89a314 [master] Import
+Date: Wed, 13 Jan 2010 15:15:43 +0900
+
+User, Name \(^^")/	2010-01-13 15:15:43 +0900 (Wed, 13 Jan 2010)
+
+  New Revision: c89a314bb3e04d77376ddfe15e3f81d46bb1e083
+
+  Message:
+    Import
+
+  Added files:
+    sample_file
+
+  Added: sample_file (+1 -0) 100644
+===================================================================
+--- /dev/null
++++ sample_file    2010-01-13 15:15:43 +0900 (e965047)
+@@ -0,0 +1 @@
++Hello
