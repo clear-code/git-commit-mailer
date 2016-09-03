@@ -185,7 +185,7 @@ class GitCommitMailer
       @diffs = []
       output = []
       n_bytes = 0
-      git("log -n 1 --pretty=format:'' -C -p #{@revision}") do |io|
+      git("log -n 1 --pretty=format:'' -C --cc -p #{@revision}") do |io|
         io.each_line do |line|
           n_bytes += line.bytesize
           break if n_bytes > mailer.max_diff_size

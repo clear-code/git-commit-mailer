@@ -83,9 +83,14 @@ class GitCommitMailer
 
     def parse_header(lines)
       line = lines.shift.strip
-      if line =~ /\Adiff --git ("?a\/.*) ("?b\/.*)/
+      case line
+      when /\Adiff --git ("?a\/.*) ("?b\/.*)/
         @from_file = extract_file_path($1)
         @to_file = extract_file_path($2)
+      when /\Adiff --(?:combined|cc) (.*?)/
+        path = CommitInfo.unescape_file_path($1)
+        @from_file = path
+        @to_file = path
       else
         raise "Unexpected diff header format: #{line}"
       end
@@ -114,6 +119,9 @@ class GitCommitMailer
         @plus_file = CommitInfo.unescape_file_path($1)
         @type = :deleted if $1 == '/dev/null'
       when /\Aindex ([0-9a-f]{7,})\.\.([0-9a-f]{7,})/
+        @old_blob = $1
+        @new_blob = $2
+      when /\Aindex ([0-9a-f]{7,}),([0-9a-f]{7,}\.\.[0-9a-f]{7,})/
         @old_blob = $1
         @new_blob = $2
       else
