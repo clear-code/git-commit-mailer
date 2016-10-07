@@ -1,5 +1,30 @@
 # News
 
+## 1.0.4 - 2016-10-07 {#version-1-0-4}
+
+### Improvements
+
+  * [GitHub] Supported formatting merge message.
+
+  * [GitHub] Supported `GH-NNN` auto link.
+
+  * Supported diff in a line.
+
+  * Improved color schema.
+
+  * Supported special characters such as "," in author name.
+
+  * Supported showing diff in merge commit.
+
+  * [GitLab] Supported GitLab Wiki as a repository browser.
+
+### Fixes
+
+  * Fixed a bug that `@domain` in email address is handled as mention.
+
+  * Fixed a bug that commit ID like string in email address is handled
+    as commit ID.
+
 ## 1.0.3 - 2015-06-09 {#version-1-0-3}
 
 ### Improvements
