@@ -271,7 +271,7 @@ class GitCommitMailer
 
     def make_parser(options)
       OptionParser.new do |parser|
-        parser.banner += "TO"
+        parser.banner += " TO"
 
         add_repository_options(parser, options)
         add_email_options(parser, options)
