@@ -765,6 +765,21 @@ module GitCommitMailerOptionTest
     assert_mail('test_github_wiki', commit_mails.first)
   end
 
+  def test_gitlab_wiki
+    gitlab_project_uri =
+      "https://gitlab.example.com/clear-code/git-utils"
+    set_additional_default_mailer_option("--repository-browser=gitlab-wiki",
+                                         "--gitlab-project-uri=#{gitlab_project_uri}")
+    create_default_mailer
+
+    create_file("README.md", "# README")
+    git "commit -m %s" % shell_escape("Add README")
+    git "push"
+
+    _, commit_mails = get_mails_of_last_push
+    assert_mail('test_gitlab_wiki', commit_mails.first)
+  end
+
   def test_html
     set_additional_default_mailer_option("--add-html",
                                          "--repository-browser=github",

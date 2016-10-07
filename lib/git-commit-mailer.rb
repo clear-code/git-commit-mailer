@@ -302,7 +302,7 @@ class GitCommitMailer
         options.reference = reference
       end
 
-      available_software = ["github", "github-wiki", "gitlab"]
+      available_software = ["github", "github-wiki", "gitlab", "gitlab-wiki"]
       label = available_software.join(", ")
       parser.on("--repository-browser=SOFTWARE",
                 available_software,

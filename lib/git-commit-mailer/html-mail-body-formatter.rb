@@ -771,6 +771,8 @@ class GitCommitMailer
         "#{base_url}#diff-#{file_md5}"
       when "github-wiki"
         commit_file_url_github_wiki(file)
+      when "gitlab-wiki"
+        commit_file_url_gitlab_wiki(file)
       else
         nil
       end

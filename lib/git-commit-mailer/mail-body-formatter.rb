@@ -40,6 +40,9 @@ class GitCommitMailer
         return nil if @mailer.gitlab_project_uri.nil?
         revision = @info.revision
         "#{@mailer.gitlab_project_uri}/commit/#{revision}"
+      when "gitlab-wiki"
+        file = (@info.updated_files + @info.added_files).first
+        commit_file_url_gitlab_wiki(file)
       else
         nil
       end
@@ -65,6 +68,18 @@ class GitCommitMailer
       page_name_in_url = ERB::Util.u(page_name)
       revision = @info.revision
       "#{base_url}/#{user}/#{repository}/wiki/#{page_name_in_url}/#{revision}"
+    end
+
+    def commit_file_url_gitlab_wiki(file)
+      return nil if file.nil?
+
+      gitlab_project_uri = @mailer.gitlab_project_uri
+      return nil if gitlab_project_uri.nil?
+
+      page_name = file.gsub(/\.[^.]+\z/, "")
+      page_name_in_url = ERB::Util.u(page_name)
+      revision = @info.revision
+      "#{gitlab_project_uri}/wikis/#{page_name_in_url}?version_id=#{revision}"
     end
   end
 end
