@@ -1,8 +1,8 @@
 rvm:
-  - 2.0.0
   - 2.1
   - 2.2
+  - 2.3
 notifications:
   email:
     recipients:
-      - commit@clear-code.com
+      - clear-code@ml.commit-email.info
