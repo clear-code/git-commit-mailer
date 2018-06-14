@@ -23,8 +23,15 @@ class GitCommitMailer
       @mailer = @info.mailer
     end
 
-    def format
-      ERB.new(template, nil, "<>").result(binding)
+    parameters = ERB.instance_method(:initialize).parameters
+    if parameters.include?([:key, :trim_mode])
+      def format
+        ERB.new(template, trim_mode: "<>").result(binding)
+      end
+    else
+      def format
+        ERB.new(template, nil, "<>").result(binding)
+      end
     end
 
     private
