@@ -1,5 +1,5 @@
 # Copyright (C) 2009  Ryo Onodera <onodera@clear-code.com>
-# Copyright (C) 2011-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2011-2018  Kouhei Sutou <kou@clear-code.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -168,6 +168,20 @@ EOF
     _ = push_mails
 
     assert_mail("test_diffs_with_binary_file", commit_mails[0])
+  end
+
+  def test_long_line
+    create_default_mailer
+
+    git_commit_new_file(DEFAULT_FILE,
+                        "a" * 999,
+                        "added a long line file")
+    git "push"
+
+    push_mails, commit_mails = get_mails_of_last_push
+    _ = push_mails
+
+    assert_mail("test_diffs_with_long_line", commit_mails[0])
   end
 end
 

@@ -1,5 +1,5 @@
 # Copyright (C) 2009  Ryo Onodera <onodera@clear-code.com>
-# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2018  Kouhei Sutou <kou@clear-code.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1212,9 +1212,6 @@ EOF
   def make_mail(info, to)
     @boundary = generate_boundary
 
-    encoding = "utf-8"
-    bit = "8bit"
-
     multipart_body_p = false
     body_text = info.format_mail_body_text
     body_html = nil
@@ -1223,16 +1220,27 @@ EOF
       multipart_body_p = (body_text.size + body_html.size) < @max_size
     end
 
+    encoding = "utf-8"
+    if need_base64_encode?(body_text) or need_base64_encode?(body_html)
+      transfer_encoding = "base64"
+      body_text = [body_text].pack("m")
+      if body_html
+        body_html = [body_html].pack("m")
+      end
+    else
+      transfer_encoding = "8bit"
+    end
+
     if multipart_body_p
       body = <<-EOB
 --#{@boundary}
 Content-Type: text/plain; charset=#{encoding}
-Content-Transfer-Encoding: #{bit}
+Content-Transfer-Encoding: #{transfer_encoding}
 
 #{body_text}
 --#{@boundary}
 Content-Type: text/html; charset=#{encoding}
-Content-Transfer-Encoding: #{bit}
+Content-Transfer-Encoding: #{transfer_encoding}
 
 #{body_html}
 --#{@boundary}--
@@ -1241,12 +1249,17 @@ EOB
       body = truncate_body(body_text, @max_size)
     end
 
-    header = make_header(encoding, bit, to, info, multipart_body_p)
+    header = make_header(encoding, transfer_encoding, to, info, multipart_body_p)
     if header.respond_to?(:force_encoding)
       header.force_encoding("BINARY")
       body.force_encoding("BINARY")
     end
     header + "\n" + body
+  end
+
+  def need_base64_encode?(text)
+    return false if text.nil?
+    text.lines.any? {|line| line.bytesize >= 998}
   end
 
   def name
@@ -1262,7 +1275,11 @@ EOB
     end
   end
 
-  def make_header(body_encoding, body_encoding_bit, to, info, multipart_body_p)
+  def make_header(body_encoding,
+                  body_transfer_encoding,
+                  to,
+                  info,
+                  multipart_body_p)
     subject = ""
     subject << "#{name}@" if name
     subject << "#{info.short_revision} "
@@ -1276,7 +1293,7 @@ EOB
       headers << " boundary=#{@boundary}"
     else
       headers << "Content-Type: text/plain; charset=#{body_encoding}"
-      headers << "Content-Transfer-Encoding: #{body_encoding_bit}"
+      headers << "Content-Transfer-Encoding: #{body_transfer_encoding}"
     end
     headers << "From: #{from(info)}"
     headers << "To: #{to.join(', ')}"
