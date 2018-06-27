@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-#
 # Copyright (C) 2009  Ryo Onodera <onodera@clear-code.com>
-# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2018  Kouhei Sutou <kou@clear-code.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,6 +34,8 @@ class GitCommitMailer
 
       @type = :modified
       @is_binary = false
+      @old_mode = nil
+      @new_mode = nil
       @is_mode_changed = false
 
       @old_blob = @new_blob = nil
@@ -182,6 +182,14 @@ class GitCommitMailer
       when /\Anew mode (.*)\z/
         @new_mode = $1
         @is_mode_changed = true
+      when /\Amode ([\d,]+)\.\.(\d+)\z/
+        parent_modes = $1.split(",")
+        current_mode = $2
+        if parent_modes.delete(current_mode)
+          @old_mode = parent_modes.join(",")
+          @new_mode = current_mode
+          @is_mode_changed = true
+        end
       else
         return false
       end
