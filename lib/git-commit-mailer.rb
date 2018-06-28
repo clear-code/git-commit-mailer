@@ -1219,6 +1219,9 @@ EOF
       body_html = info.format_mail_body_html
       multipart_body_p = (body_text.size + body_html.size) < @max_size
     end
+    unless multipart_body_p
+      body_text = truncate_body(body_text, @max_size)
+    end
 
     encoding = "utf-8"
     if need_base64_encode?(body_text) or need_base64_encode?(body_html)
@@ -1246,7 +1249,7 @@ Content-Transfer-Encoding: #{transfer_encoding}
 --#{@boundary}--
 EOB
     else
-      body = truncate_body(body_text, @max_size)
+      body = body_text
     end
 
     header = make_header(encoding, transfer_encoding, to, info, multipart_body_p)

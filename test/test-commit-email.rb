@@ -726,6 +726,20 @@ module GitCommitMailerOptionTest
     assert_mail('test_max_size.push_mail', push_mails[0])
   end
 
+  def test_max_size_long_line
+    set_additional_default_mailer_option("--max-size=1500B")
+    create_default_mailer
+
+    git_commit_new_file(DEFAULT_FILE,
+                        ("a" * 999 + "\n") * 2,
+                        "added a long line file")
+    git 'push'
+
+    _, commit_mails = get_mails_of_last_push
+
+    assert_mail('test_max_size_long_line.commit_mail', commit_mails[0])
+  end
+
   def test_max_diff_size
     set_additional_default_mailer_option("--max-diff-size=200B")
     create_default_mailer
