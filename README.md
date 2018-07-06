@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/clear-code/git-commit-mailer.svg?branch=master)](https://travis-ci.org/clear-code/git-commit-mailer)
 
+This project has been moved to https://gitlab.com/clear-code/git-commit-mailer .
+
 # GitCommitMailer
 
 A utility to send commit mails for commits pushed to Git repositories.
